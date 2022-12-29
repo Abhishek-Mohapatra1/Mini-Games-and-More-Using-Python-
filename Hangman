@@ -13,6 +13,8 @@ logo = '''
 
 print(logo)
 
+import Hangman_word
+import random
 
 stages = ['''
   +---+
@@ -73,7 +75,8 @@ stages = ['''
 
 
 
-import random
+
+word_list=Hangman_word.word_list
 
 # Chooses a word from word_list Randomly
 chosen_word=random.choice(word_list)
