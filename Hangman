@@ -1,1 +1,118 @@
+logo = ''' 
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/    '''
 
+                                                                    
+                        
+
+print(logo)
+
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+
+
+import random
+
+# Chooses a word from word_list Randomly
+chosen_word=random.choice(word_list)
+
+#print(f'the choosed word is "{chosen_word}"')
+
+# get all the letters from the word and replace it with '_' and append into a new list display
+display=[]
+for letter in chosen_word:
+    display.append(letter.replace(letter,'_'))
+
+end_of_game=False
+lives=6
+
+# program will run until end_of_game is True
+while not end_of_game:
+    
+    # Guess a Random Letter
+    guess = input('Guess a letter :').lower()
+
+    for position in range(len(chosen_word)):
+        
+        # If the guessed letter matches any letter from choose_word then '_' from display will be replaced by the guessed Letter
+        if chosen_word[position]==guess:
+            display[position]=chosen_word[position]
+    print(display)
+    
+    #If it does'nt matches then one live is lost and will print a stage until all the stages are printed at last we loss
+    if guess not in chosen_word:
+        lives-=1
+        print('You lost a life')
+        
+        if lives==0:
+            end_of_games=True
+            print('You Loss')
+    # if all "_" in display are replaced with the letter and we achieve the word then "We Win"
+    if '_' not in display:
+        end_of_game=True
+        print('You Win')
+        
+
+    print(stages[lives])
